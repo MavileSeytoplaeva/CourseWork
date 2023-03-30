@@ -60,6 +60,10 @@ public class Employee {
         return id;
     }
 
+    public static int getCounter() {
+        return counter;
+    }
+
     public static void setId(int id) {
         Employee.counter = id;
     }
