@@ -15,12 +15,22 @@ public class main {
         employeeCount[7] = new Employee("Доронина Ульяна Дмитриевна", 3, 85385);
         employeeCount[8] = new Employee("Горбунова Женевьева Васильевна", 4, 82519);
         employeeCount[9] = new Employee("Казакова Грета Дамировна", 5, 91960);
-        System.out.println(EmployeeService.printListOfEmployees(employeeCount));
-        System.out.println(EmployeeService.countSalaryCostsPerMonth(employeeCount));
-        System.out.println(EmployeeService.findEmployeeWithMinSalary(employeeCount));
-        System.out.println(EmployeeService.findEmployeeWithMaxSalary(employeeCount));
-        System.out.println(EmployeeService.printAverageSalary(employeeCount));
-        System.out.println(EmployeeService.printFullNamesOnly(employeeCount));
+//        System.out.println(EmployeeService.printListOfEmployees(employeeCount));
+//        System.out.println(EmployeeService.countSalaryCostsPerMonth(employeeCount));
+//        System.out.println(EmployeeService.findEmployeeWithMinSalary(employeeCount));
+//        System.out.println(EmployeeService.findEmployeeWithMaxSalary(employeeCount));
+//        System.out.println(EmployeeService.printAverageSalary(employeeCount));
+//        System.out.println(EmployeeService.printFullNamesOnly(employeeCount));
+//        System.out.println(EmployeeService.changeTheSalaryForEveryone(employeeCount, 40));
+//        System.out.println(EmployeeService.printListOfEmployees(employeeCount));
+//        System.out.println(EmployeeService.findEmployeeWithMinSalaryInDepartment(employeeCount, 1));
+//        System.out.println(EmployeeService.findEmployeeWithMaxSalaryInDepartment(employeeCount, 1));
+//        System.out.println(EmployeeService.countSalaryCostsPerMonthByDepartment(employeeCount, 1));
+//        System.out.println(EmployeeService.printAverageSalaryByDepartment(employeeCount, 1));
+//        System.out.println(EmployeeService.changeTheSalaryForEveryoneInDepartment(employeeCount, 1, 20));
+//        System.out.println(EmployeeService.printEmployeesInDepartment(employeeCount, 1));
+//        System.out.println(EmployeeService.employeeWithSalaryLessThanGiven(employeeCount, 80000));
+//        System.out.println(EmployeeService.employeeWithSalaryMoreThanGiven(employeeCount, 90000));
     }
 }
 
