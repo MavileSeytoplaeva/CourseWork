@@ -3,7 +3,7 @@ package skypro.courseWork;
 import java.util.Objects;
 public class Employee {
     private int id;
-    private static int counter = 1;
+    private static int counter;
     private String fullname;
     private int department;
     private int salary;
@@ -12,8 +12,7 @@ public class Employee {
         this.fullname = fullname;
         this.department = department;
         this.salary = salary;
-        this.id = counter;
-        counter++;
+        this.id = counter++;
     }
 
     @Override
@@ -56,16 +55,8 @@ public class Employee {
         this.salary = salary;
     }
 
+
     public int getId() {
         return id;
     }
-
-    public static int getCounter() {
-        return counter;
-    }
-
-    public static void setId(int id) {
-        Employee.counter = id;
-    }
-
 }
