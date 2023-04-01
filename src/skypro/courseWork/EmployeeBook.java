@@ -1,6 +1,5 @@
 package skypro.courseWork;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class EmployeeBook {
@@ -192,14 +191,6 @@ public class EmployeeBook {
     }
 
     public void addEmployee(String fullname, int department, int salary) {
-//        for (int i = 0; i <= employees.length - 1; i++) {
-//            if (employees[i] != null) {
-//                continue;
-//            }
-////                break;
-//            System.out.println("Нельзя добавить нового сотрудника. Нет мест.");
-//            break;
-//        }
         for (int i = 0; i <= employees.length - 1; i++) {
             if (employees[i] == null) {
                 System.out.println("Новый сотрудник добавлен");
@@ -209,6 +200,7 @@ public class EmployeeBook {
             }
         }
     }
+
     public void removeEmployee(String fullname) {
         for (int i = 0; i <= employees.length; i++) {
             size = Employee.getCounter() - 1;
@@ -225,17 +217,102 @@ public class EmployeeBook {
         }
     }
 
-    public void changeEmployeesSalary(String fullname) {
+    public void changeEmployeesData(String fullname) {
         Scanner scan = new Scanner(System.in);
-        for (int i = 0; i <= employees.length-1; i++) {
-            if (employees[i].getFullname().equals(fullname)) {
-                employees[i].setSalary(scan.nextInt());
-            }
+        System.out.println("Если вы хотите изменить и зарплату сотрудника и его отдел введите 0, если хотите изменить только его зарплату введите 1, если хотите изменить отдел введите 2");
+        switch (scan.nextInt()) {
+            case 0:
+                for (int i = 0; i <= employees.length - 1; i++) {
+                    if (employees[i].getFullname().equals(fullname)) {
+                        System.out.println("Зарплата у " + employees[i].getFullname() + " " + employees[i].getSalary() + " и он работает в отделе " + employees[i].getDepartment() + " Это  "+department(employees[i].getDepartment())+". Введите новую зарплату");
+                        employees[i].setSalary(scan.nextInt());
+                        System.out.println("Введите новый отдел");
+                        int newDepartment = scan.nextInt();
+                        if (newDepartment == employees[i].getDepartment()) {
+                            System.out.println("Извините он уже работает в этом отделе");
+                        } else {
+                            switch (newDepartment) {
+                                case 1, 2, 3, 4, 5:
+                                    employees[i].setDepartment(newDepartment);
+                            }
+                        }
+                        System.out.println("Зарплата успешно изменена. Сейчас зарплата у " + employees[i].getFullname() + " " + employees[i].getSalary() + " и теперь он работает в отделе " + employees[i].getDepartment()+"("+department(employees[i].getDepartment())+")");
+                    }
+                }
+                break;
+            case 1:
+                for (int i = 0; i <= employees.length - 1; i++) {
+                    if (employees[i].getFullname().equals(fullname)) {
+                        System.out.println("Зарплата у " + employees[i].getFullname() + " " + employees[i].getSalary() + ". Введите новую зарплату ");
+                        employees[i].setSalary(scan.nextInt());
+                        System.out.println("Зарплата успешно изменена. Сейчас зарплата у " + employees[i].getFullname() + " " + employees[i].getSalary());
+                    }
+                }
+                break;
+            case 2:
+                for (int i = 0; i <= employees.length - 1; i++) {
+                    if (employees[i].getFullname().equals(fullname)) {
+                        System.out.println(employees[i].getFullname() + " работает в отделе " + employees[i].getDepartment() +"("+department(employees[i].getDepartment())+")"+". В какой отдел перевести " + employees[i].getFullname());
+                        System.out.println("1 - Отдел снабжения и закупок (ОС)");
+                        System.out.println("2 - Отдел по работе с партнёрами(ОРП)");
+                        System.out.println("3 - Отдел промышленной безопасности(ОПБ)");
+                        System.out.println("4 - Отдел технического контроля (ОТК)");
+                        System.out.println("5 - Отдел логистики (ОЛ)");
+                        int newDepartment = scan.nextInt();
+                        if (newDepartment == employees[i].getDepartment()) {
+                            System.out.println("Извините он уже работает в этом отделе");
+                        } else {
+                            switch (newDepartment) {
+                                case 1, 2, 3, 4, 5:
+                                    employees[i].setDepartment(newDepartment);
+                                    System.out.println("Отдел успешно изменён. Теперь новый отдел " + newDepartment+"("+department(employees[i].getDepartment())+")");
+                            }
+                        }
+                    }
+                }
+                break;
         }
         scan.close();
     }
+
+    public void printFullnamesByDepartment(int department) {
+        System.out.println("Отдел "+department);
+        for (Employee departmentE : employees) {
+            if (department == departmentE.getDepartment()) {
+                System.out.println(departmentE.getFullname());
+            }
+        }
+    }
+    public void printListOfEmployeesByDepartment() {
+        printFullnamesByDepartment(1);
+        printFullnamesByDepartment(2);
+        printFullnamesByDepartment(3);
+        printFullnamesByDepartment(4);
+        printFullnamesByDepartment(5);
+    }
+
+    public String department(int department) {
+        for (Employee departmentNumber : employees) {
+            if (departmentNumber.getDepartment() == department){
+                if (department == 1) {
+                    return "Отдел снабжения и закупок (ОС)";
+                }
+                if (department == 2) {
+                    return "Отдел по работе с партнёрами(ОРП)";
+                }
+                if (department == 3) {
+                    return "Отдел промышленной безопасности(ОПБ)";
+                }
+                if (department == 4) {
+                    return "Отдел технического контроля (ОТК)";
+                }
+                if (department == 5) {
+                    return "Отдел логистики (ОЛ)";
+                }
+                break;
+            }
+        }
+        return null;
+    }
 }
-//5. Изменить сотрудника (получить сотрудника по Ф. И. О., модернизировать его запись):
-//    1. Изменить зарплату.
-//    2. Изменить отдел.
-//    Придумать архитектуру. Сделать или два метода, или один, но продумать его.
+
